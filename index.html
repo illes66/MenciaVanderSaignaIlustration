@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mencia Vander Saigna · Ilustración</title>
+  <meta name="description" content="Portfolio de ilustración de Mencia Vander Saigna">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ============ HEADER: título + REDES SOCIALES (arriba a la derecha) ============
+       CAMBIAR ENLACES: edita las URLs en js/config.js -> SOCIAL_LINKS (se pintan solas). -->
+  <header class="site-header">
+    <a class="brand" href="./">Mencia Vander Saigna</a>
+    <nav id="social" class="social" aria-label="Redes sociales"></nav>
+  </header>
+
+  <!-- ============ LAYOUT 20% | 60% | 20% (ver --side-width en css/styles.css) ============ -->
+  <div class="layout">
+
+    <!-- IZQUIERDA: categorías por Tipo / Técnica / Proyecto -->
+    <aside class="side side-left" aria-label="Categorías">
+      <div class="tabs" role="tablist" id="groupTabs"></div>
+      <ul id="categoryList" class="category-list"></ul>
+    </aside>
+
+    <!-- CENTRO -->
+    <main class="center">
+      <!-- Landing: vídeo/imágenes en bucle. Desaparece al elegir categoría.
+           CAMBIAR VÍDEO: js/config.js -> LANDING (url, poster) o sustituye assets/landing.mp4 -->
+      <section id="landing" class="landing">
+        <video id="landingVideo" muted loop autoplay playsinline></video>
+        <div id="landingSlides" class="landing-slides" hidden></div>
+      </section>
+
+      <!-- Galería: imagen principal + miniaturas (carrusel 3-6 imágenes) -->
+      <section id="gallery" class="gallery" hidden>
+        <button id="backBtn" class="back-btn" type="button">← Inicio</button>
+        <div class="stage">
+          <button id="prevBtn" class="nav-btn" type="button" aria-label="Anterior">‹</button>
+          <figure class="main-figure">
+            <img id="mainImage" alt="">
+            <!-- Capa transparente: dificulta guardar/arrastrar la imagen (ver docs/RECOMMENDATIONS.md) -->
+            <div class="shield" oncontextmenu="return false"></div>
+          </figure>
+          <button id="nextBtn" class="nav-btn" type="button" aria-label="Siguiente">›</button>
+        </div>
+        <div id="thumbs" class="thumbs"></div>
+      </section>
+      <p id="status" class="status" role="status"></p>
+    </main>
+
+    <!-- DERECHA: panel de descripción del item (al seleccionar) o Feed de noticias (por defecto) -->
+    <aside class="side side-right" aria-label="Noticias e información">
+      <section id="infoPanel" hidden>
+        <h2 id="infoTitle"></h2>
+        <p id="infoDesc"></p>
+        <div id="infoTags" class="tags"></div>
+        <!-- TIENDA (futuro): se rellena sólo si el item tiene enlace de compra. Ver SHOP en js/config.js -->
+        <a id="shopBtn" class="shop-btn" href="#" target="_blank" rel="noopener" hidden></a>
+      </section>
+      <section id="newsPanel">
+        <h2>Noticias</h2>
+        <ul id="newsFeed" class="news-feed"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <!-- FOOTER: email, año y copyright. Edita en js/config.js -> SITE -->
+  <footer class="site-footer">
+    <a id="footMail" href="#"></a>
+    <span id="footCopy"></span>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

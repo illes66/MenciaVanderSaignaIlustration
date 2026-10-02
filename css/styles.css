@@ -1,0 +1,100 @@
+/* ===================== PALETA (edita aquí) =====================
+   Turquesas: --teal-1 #5DD9D3 | --teal-dark #197771 | --teal-2 #00C2CB | --teal-3 #7FE0D4 | --mint #82F3DB
+   Amarillos suaves: --yellow #FFE38A | --cream (más claro)
+   Acento: --accent #E3376C (rosa/frambuesa)                                  */
+:root {
+  --teal-1: #5DD9D3;
+  --teal-dark: #197771;
+  --teal-2: #00C2CB;
+  --teal-3: #7FE0D4;
+  --mint: #82F3DB;
+  --yellow: #FFE38A;
+  --cream: #FFF8DC;
+  --accent: #E3376C;
+
+  --bg: var(--cream);
+  --text: #12403d;
+
+  /* ANCHO DE LOS BORDES LATERALES: 20% cada uno (el centro ocupa el 60%) */
+  --side-width: 20%;
+
+  /* TAMAÑO DE LA IMAGEN PRINCIPAL (recomendado: 4:3 / altura máx. 65vh; en
+     ordenador ocupa ~60% del ancho de pantalla). Cambia estos dos valores. */
+  --main-image-max-height: 65vh;
+  --main-image-ratio: 4 / 3;
+  --thumb-size: 84px; /* tamaño de las miniaturas */
+
+  /* TRANSICIONES (duración y curva). Para desactivar: pon 0s */
+  --fade-duration: 0.5s;      /* cambio de imagen principal */
+  --ui-duration: 0.25s;       /* hover/botones */
+  --ease: ease-in-out;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+h2 { color: var(--teal-dark); margin-top: 0; }
+a { color: var(--teal-dark); }
+
+.site-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: linear-gradient(90deg, var(--teal-1), var(--mint)); }
+.brand { font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--teal-dark); }
+.social { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.social a { padding: 4px 12px; border-radius: 999px; background: var(--teal-dark); color: #fff; text-decoration: none; font-size: .85rem; transition: background var(--ui-duration) var(--ease); }
+.social a:hover { background: var(--accent); }
+
+.layout { display: flex; flex: 1; min-height: 0; }
+.side { width: var(--side-width); padding: 16px; overflow-y: auto; max-height: calc(100vh - 110px); }
+.side-left { background: var(--teal-3); }
+.side-right { background: #fff3c2; }
+.center { flex: 1; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; }
+
+/* Categorías */
+.tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+.tabs button { flex: 1; border: 0; padding: 6px 4px; border-radius: 6px; background: var(--teal-1); color: var(--teal-dark); cursor: pointer; font-weight: 600; transition: background var(--ui-duration) var(--ease); }
+.tabs button.active, .tabs button:hover { background: var(--teal-dark); color: #fff; }
+.category-list { list-style: none; margin: 0; padding: 0; }
+.category-list button { width: 100%; text-align: left; border: 0; background: transparent; padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 1rem; color: var(--text); transition: background var(--ui-duration) var(--ease); }
+.category-list button:hover { background: var(--mint); }
+.category-list button.active { background: var(--accent); color: #fff; }
+
+/* Landing */
+.landing { width: 100%; }
+.landing video, .landing-slides img { width: 100%; max-height: 75vh; object-fit: cover; border-radius: 12px; display: block; }
+.landing-slides img { animation: fade var(--fade-duration) var(--ease); }
+.landing video[src=""], .landing video:not([src]) { display: none; }
+
+/* Galería */
+.gallery { width: 100%; max-width: 900px; }
+.back-btn { border: 0; background: var(--yellow); color: var(--teal-dark); padding: 6px 12px; border-radius: 6px; cursor: pointer; margin-bottom: 8px; }
+.stage { display: flex; align-items: center; gap: 8px; }
+.main-figure { position: relative; margin: 0; flex: 1; aspect-ratio: var(--main-image-ratio); max-height: var(--main-image-max-height); background: #fff; border-radius: 12px; overflow: hidden; display: flex; }
+.main-figure img { width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; user-select: none; animation: fade var(--fade-duration) var(--ease); }
+.shield { position: absolute; inset: 0; }
+.nav-btn { border: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--teal-2); color: #fff; font-size: 1.6rem; cursor: pointer; transition: background var(--ui-duration) var(--ease); }
+.nav-btn:hover { background: var(--accent); }
+.thumbs { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.thumbs button { padding: 0; border: 3px solid transparent; border-radius: 8px; overflow: hidden; cursor: pointer; width: var(--thumb-size); height: var(--thumb-size); background: #fff; opacity: .7; transition: opacity var(--ui-duration) var(--ease), border-color var(--ui-duration) var(--ease); }
+.thumbs button.active, .thumbs button:hover { opacity: 1; border-color: var(--accent); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+.status { color: var(--teal-dark); }
+
+/* Panel derecho */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { background: var(--teal-dark); color: #fff; padding: 3px 10px; border-radius: 999px; font-size: .8rem; }
+.tag.type { background: var(--accent); }
+.tag.project { background: var(--teal-2); }
+.news-feed { list-style: none; padding: 0; margin: 0; }
+.news-feed li { background: #fff; border-left: 4px solid var(--accent); border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; font-size: .9rem; }
+.news-feed time { display: block; font-size: .75rem; color: var(--teal-dark); }
+.shop-btn { display: inline-block; margin-top: 14px; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: #fff; text-decoration: none; }
+
+.site-footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 24px; background: var(--teal-dark); color: #fff; font-size: .9rem; }
+.site-footer a { color: var(--yellow); }
+
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  .side { width: 100%; max-height: none; }
+  .center { order: -1; }
+}
